@@ -1,4 +1,4 @@
-import Header from "../comp/header";
+import Header from "../comp/Header";
 import Footer from "../comp/Footer";
 
 import { Helmet } from "react-helmet-async";
@@ -13,7 +13,7 @@ const Css = () => {
 
       <Header />
 
-    
+
 
       <Footer />
     </>

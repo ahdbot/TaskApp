@@ -1,10 +1,9 @@
-import Header from "../comp/header";
+import Header from "../comp/Header";
 import Footer from "../comp/Footer";
 
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import Error from "../pages/Error";
-
 
 import {
   createUserWithEmailAndPassword,
@@ -24,7 +23,7 @@ const Signup = () => {
   const [firebaseError, setfirebaseError] = useState("");
   const [userName, setUserName] = useState("");
   const [user, loading, error] = useAuthState(auth);
-  
+
   // loading
 
   // not sing-in
@@ -36,69 +35,65 @@ const Signup = () => {
   useEffect(() => {
     if (user) {
       if (user.emailVerified) {
-         navigate("/");
+        navigate("/");
       }
     }
   });
 
   const SignUpBtn = (eo) => {
-  
-      eo.preventDefault();
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          // Signed in
-          const user = userCredential.user;
-          console.log(user);
+    eo.preventDefault();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
 
-          sendEmailVerification(auth.currentUser).then(() => {
-            console.log("Email verification Sent ! ");
-          });
-          updateProfile(auth.currentUser, {
-            displayName: userName,
-          })
-            .then(() => {
-              navigate("/");
-            })
-            .catch((error) => {
-              console.log(error.code);
-            });
-          navigate("/");
-          // ...
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          sethasError(true);
-
-          switch (errorCode) {
-            case "auth/invalid-email":
-              setfirebaseError("Wrong Email");
-              break;
-
-            case "auth/user-not-found":
-              setfirebaseError("Wrong Email");
-              break;
-
-            case "auth/wrong-password":
-              setfirebaseError("Wrong Password");
-              break;
-
-            case "auth/too-many-requests":
-              setfirebaseError(
-                "Too many requests, please try aganin later"
-              );
-              break;
-
-            default:
-              setfirebaseError("Please check your email & password");
-              break;
-          }
+        sendEmailVerification(auth.currentUser).then(() => {
+          console.log("Email verification Sent ! ");
         });
-   
-  }
+        updateProfile(auth.currentUser, {
+          displayName: userName,
+        })
+          .then(() => {
+            navigate("/");
+          })
+          .catch((error) => {
+            console.log(error.code);
+          });
+        navigate("/");
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        sethasError(true);
 
-   if (error) {
-     return <Error/>
-   }
+        switch (errorCode) {
+          case "auth/invalid-email":
+            setfirebaseError("Wrong Email");
+            break;
+
+          case "auth/user-not-found":
+            setfirebaseError("Wrong Email");
+            break;
+
+          case "auth/wrong-password":
+            setfirebaseError("Wrong Password");
+            break;
+
+          case "auth/too-many-requests":
+            setfirebaseError("Too many requests, please try aganin later");
+            break;
+
+          default:
+            setfirebaseError("Please check your email & password");
+            break;
+        }
+      });
+  };
+
+  if (error) {
+    return <Error />;
+  }
   if (loading) {
     return (
       <div>

@@ -1,4 +1,4 @@
-import Header from "../comp/header";
+import Header from "../comp/Header";
 import Footer from "../comp/Footer";
 
 import { Helmet } from "react-helmet-async";
@@ -26,13 +26,14 @@ const About = () => {
 
   if (loading) {
     return (
-      <div>
+      <>
+        <Helmet>
+          <title>About Page</title>
+        </Helmet>
         <Header />
-
-        <main>Loading ........</main>
-
+        <main>About page</main>
         <Footer />
-      </div>
+      </>
     );
   }
 

@@ -1,16 +1,20 @@
-import Header from "../comp/header";
-import Footer from "../comp/Footer";
-import Error from "../pages/Error";
+import Header from "../../comp/Header";
+import Footer from "../../comp/Footer";
+import Error from "../Error";
 
 import { Helmet } from "react-helmet-async";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../firebase/config";
+import { auth } from "../../firebase/config";
 import { Link } from "react-router-dom";
 import { sendEmailVerification } from "firebase/auth";
-import ReactLoading from "react-loading";
+// import ReactLoading from "react-loading";
 import Loading from "react-loading";
+import "./Home.css";
 
 // LEVEL 2
+
+// level 3
+import "./Home.css";
 const SendAgine = () => {
   sendEmailVerification(auth.currentUser).then(() => {
     console.log("Email Verification sent!");
@@ -112,8 +116,57 @@ const Home = () => {
 
           <Header />
 
-          <main>
-  
+          <main className=" home">
+            <section className=" parent-of-btns flex mtt">
+              <button>Newest First</button>
+              <button>Oldest first </button>
+              <select id="browsers">
+                <option value="ddddd"> All Tasks </option>
+                <option value="dddddd"> Completed </option>
+                <option value="dddddd"> Not Completed </option>
+              </select>
+            </section>
+
+            <section className="flex all-tasks">
+              <article dir="auto" className="one-task">
+                <h2> New Task</h2>
+                <ul>
+                  <li>Sub task 1</li>
+                  <li>Sub task 2</li>
+                </ul>
+                <p className="time">a day ago</p>
+              </article>
+              <article dir="auto" className="one-task">
+                <h2> New Task</h2>
+                <ul>
+                  <li>Sub task 1</li>
+                  <li>Sub task 2</li>
+                </ul>
+                <p className="time">a day ago</p>
+              </article>
+              <article dir="auto" className="one-task">
+                <h2> New Task</h2>
+                <ul>
+                  <li>Sub task 1</li>
+                  <li>Sub task 2</li>
+                </ul>
+                <p className="time">a day ago</p>
+              </article>
+              <article dir="auto" className="one-task">
+                <h2> شراء جوافة</h2>
+                <ul>
+                  <li> كيلو جوافة من السوق3 </li>
+                  <li> كيلو جوافة من السوق3 </li>
+                </ul>
+                <p className="time">a day ago</p>
+              </article>
+            </section>
+
+            <section className="mt">
+              <button className="add-task-btn  ">
+                Add new Task <i class="fa-solid fa-plus"></i>
+              </button>
+            </section>
           </main>
 
           <Footer />

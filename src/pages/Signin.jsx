@@ -1,4 +1,4 @@
-import Header from "../comp/header";
+import Header from "../comp/Header";
 import Footer from "../comp/Footer";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
@@ -20,11 +20,10 @@ const Signin = () => {
   const [firebaseError, setfirebaseError] = useState("");
   const [showForm, setshowForm] = useState("");
   const [showSendEmail, setshowSendEmail] = useState(false);
-  
 
   const ForgetPassword = () => {
     setshowForm("show-forgot-password");
-  }
+  };
   const SignInBTN = (eo) => {
     eo.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
@@ -99,7 +98,7 @@ const Signin = () => {
                 })
                 .catch((error) => {
                   const errorCode = error.code;
-               
+
                   console.log(errorCode);
                   // ..
                 });
@@ -148,7 +147,6 @@ const Signin = () => {
             onClick={() => {
               ForgetPassword();
             }}
-        
           >
             Forgot password ?
           </p>
