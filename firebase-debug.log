@@ -1,0 +1,131 @@
+[debug] [2024-03-20T03:19:44.870Z] ----------------------------------------------------------------------
+[debug] [2024-03-20T03:19:44.872Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-03-20T03:19:44.872Z] CLI Version:   13.5.2
+[debug] [2024-03-20T03:19:44.872Z] Platform:      win32
+[debug] [2024-03-20T03:19:44.872Z] Node Version:  v20.11.0
+[debug] [2024-03-20T03:19:44.872Z] Time:          Wed Mar 20 2024 06:19:44 GMT+0300 (التوقيت العربي الرسمي)
+[debug] [2024-03-20T03:19:44.872Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-03-20T03:19:44.914Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-03-20T03:19:44.914Z] > authorizing via signed-in user (ahdbot@gmail.com)
+[debug] [2024-03-20T03:19:44.914Z] [iam] checking project courses4arab-b3881 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-03-20T03:19:44.916Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions [none]
+[debug] [2024-03-20T03:19:44.916Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions x-goog-quota-user=projects/courses4arab-b3881
+[debug] [2024-03-20T03:19:44.916Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-03-20T03:19:46.053Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions 200
+[debug] [2024-03-20T03:19:46.053Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions {}
+[debug] [2024-03-20T03:19:46.054Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project courses4arab-b3881:
+
+  firebase.projects.get
+  firebasehosting.sites.update
+[debug] [2024-03-20T03:19:46.054Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/courses4arab-b3881 [none]
+[debug] [2024-03-20T03:19:46.633Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/courses4arab-b3881 403
+[debug] [2024-03-20T03:19:46.633Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/courses4arab-b3881 {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2024-03-20T03:19:46.634Z] HTTP Error: 403, The caller does not have permission
+[debug] [2024-03-20T03:19:46.635Z] Specified "public" directory "build" does not exist; Deploy to Hosting site "" may fail or be empty.
+[error] 
+[error] Error: Assertion failed: resolving hosting target of a site with no site name or target name. This should have caused an error earlier
+[debug] [2024-03-20T03:20:26.955Z] ----------------------------------------------------------------------
+[debug] [2024-03-20T03:20:26.957Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-03-20T03:20:26.957Z] CLI Version:   13.5.2
+[debug] [2024-03-20T03:20:26.957Z] Platform:      win32
+[debug] [2024-03-20T03:20:26.957Z] Node Version:  v20.11.0
+[debug] [2024-03-20T03:20:26.958Z] Time:          Wed Mar 20 2024 06:20:26 GMT+0300 (التوقيت العربي الرسمي)
+[debug] [2024-03-20T03:20:26.958Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-03-20T03:20:27.001Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-03-20T03:20:27.001Z] > authorizing via signed-in user (ahdbot@gmail.com)
+[debug] [2024-03-20T03:20:27.001Z] [iam] checking project courses4arab-b3881 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-03-20T03:20:27.002Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions [none]
+[debug] [2024-03-20T03:20:27.002Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions x-goog-quota-user=projects/courses4arab-b3881
+[debug] [2024-03-20T03:20:27.003Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-03-20T03:20:28.051Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions 200
+[debug] [2024-03-20T03:20:28.052Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions {}
+[debug] [2024-03-20T03:20:28.052Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project courses4arab-b3881:
+
+  firebase.projects.get
+  firebasehosting.sites.update
+[debug] [2024-03-20T03:20:28.052Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/courses4arab-b3881 [none]
+[debug] [2024-03-20T03:20:28.463Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/courses4arab-b3881 403
+[debug] [2024-03-20T03:20:28.463Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/courses4arab-b3881 {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2024-03-20T03:20:28.465Z] HTTP Error: 403, The caller does not have permission
+[error] 
+[error] Error: Assertion failed: resolving hosting target of a site with no site name or target name. This should have caused an error earlier
+[debug] [2024-03-20T03:20:39.825Z] ----------------------------------------------------------------------
+[debug] [2024-03-20T03:20:39.827Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-03-20T03:20:39.827Z] CLI Version:   13.5.2
+[debug] [2024-03-20T03:20:39.827Z] Platform:      win32
+[debug] [2024-03-20T03:20:39.827Z] Node Version:  v20.11.0
+[debug] [2024-03-20T03:20:39.827Z] Time:          Wed Mar 20 2024 06:20:39 GMT+0300 (التوقيت العربي الرسمي)
+[debug] [2024-03-20T03:20:39.828Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-03-20T03:20:39.869Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-03-20T03:20:39.869Z] > authorizing via signed-in user (ahdbot@gmail.com)
+[debug] [2024-03-20T03:20:39.872Z] [iam] checking project courses4arab-b3881 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-03-20T03:20:39.873Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions [none]
+[debug] [2024-03-20T03:20:39.873Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions x-goog-quota-user=projects/courses4arab-b3881
+[debug] [2024-03-20T03:20:39.874Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-03-20T03:20:40.967Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions 200
+[debug] [2024-03-20T03:20:40.967Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions {}
+[debug] [2024-03-20T03:20:40.967Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project courses4arab-b3881:
+
+  firebase.projects.get
+  firebasehosting.sites.update
+[debug] [2024-03-20T03:20:40.968Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/courses4arab-b3881 [none]
+[debug] [2024-03-20T03:20:41.339Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/courses4arab-b3881 403
+[debug] [2024-03-20T03:20:41.339Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/courses4arab-b3881 {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2024-03-20T03:20:41.339Z] HTTP Error: 403, The caller does not have permission
+[error] 
+[error] Error: Assertion failed: resolving hosting target of a site with no site name or target name. This should have caused an error earlier
+[debug] [2024-03-20T03:21:31.655Z] ----------------------------------------------------------------------
+[debug] [2024-03-20T03:21:31.657Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-03-20T03:21:31.657Z] CLI Version:   13.5.2
+[debug] [2024-03-20T03:21:31.657Z] Platform:      win32
+[debug] [2024-03-20T03:21:31.657Z] Node Version:  v20.11.0
+[debug] [2024-03-20T03:21:31.657Z] Time:          Wed Mar 20 2024 06:21:31 GMT+0300 (التوقيت العربي الرسمي)
+[debug] [2024-03-20T03:21:31.657Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-03-20T03:21:31.697Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-03-20T03:21:31.697Z] > authorizing via signed-in user (ahdbot@gmail.com)
+[debug] [2024-03-20T03:21:31.697Z] [iam] checking project courses4arab-b3881 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-03-20T03:21:31.699Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions [none]
+[debug] [2024-03-20T03:21:31.699Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions x-goog-quota-user=projects/courses4arab-b3881
+[debug] [2024-03-20T03:21:31.699Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-03-20T03:21:32.758Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions 200
+[debug] [2024-03-20T03:21:32.758Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions {}
+[debug] [2024-03-20T03:21:32.758Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project courses4arab-b3881:
+
+  firebase.projects.get
+  firebasehosting.sites.update
+[debug] [2024-03-20T03:21:32.759Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/courses4arab-b3881 [none]
+[debug] [2024-03-20T03:21:33.342Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/courses4arab-b3881 403
+[debug] [2024-03-20T03:21:33.342Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/courses4arab-b3881 {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2024-03-20T03:21:33.342Z] HTTP Error: 403, The caller does not have permission
+[error] 
+[error] Error: Assertion failed: resolving hosting target of a site with no site name or target name. This should have caused an error earlier
+[debug] [2024-03-20T03:57:07.655Z] ----------------------------------------------------------------------
+[debug] [2024-03-20T03:57:07.657Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-03-20T03:57:07.657Z] CLI Version:   13.5.2
+[debug] [2024-03-20T03:57:07.658Z] Platform:      win32
+[debug] [2024-03-20T03:57:07.658Z] Node Version:  v20.11.0
+[debug] [2024-03-20T03:57:07.658Z] Time:          Wed Mar 20 2024 06:57:07 GMT+0300 (التوقيت العربي الرسمي)
+[debug] [2024-03-20T03:57:07.658Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-03-20T03:57:07.701Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-03-20T03:57:07.701Z] > authorizing via signed-in user (ahdbot@gmail.com)
+[debug] [2024-03-20T03:57:07.701Z] [iam] checking project courses4arab-b3881 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-03-20T03:57:07.703Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions [none]
+[debug] [2024-03-20T03:57:07.703Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions x-goog-quota-user=projects/courses4arab-b3881
+[debug] [2024-03-20T03:57:07.703Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-03-20T03:57:08.793Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions 200
+[debug] [2024-03-20T03:57:08.793Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/courses4arab-b3881:testIamPermissions {}
+[debug] [2024-03-20T03:57:08.793Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project courses4arab-b3881:
+
+  firebase.projects.get
+  firebasehosting.sites.update
+[debug] [2024-03-20T03:57:08.794Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/courses4arab-b3881 [none]
+[debug] [2024-03-20T03:57:09.453Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/courses4arab-b3881 403
+[debug] [2024-03-20T03:57:09.453Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/courses4arab-b3881 {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2024-03-20T03:57:09.454Z] HTTP Error: 403, The caller does not have permission
+[error] 
+[error] Error: Assertion failed: resolving hosting target of a site with no site name or target name. This should have caused an error earlier
