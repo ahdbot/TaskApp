@@ -8,7 +8,7 @@ import Error from "./pages/Error";
 import { useContext } from "react";
 import ThemeContext from "./context/ThemeContext";
 import Signup from "./pages/Singup";
-import Signin from "./pages/Signin";
+import Signin from "./pages/signin/Signin";
 import EditTask from "./pages/edit-task/editTask";
 
 const router = createBrowserRouter([

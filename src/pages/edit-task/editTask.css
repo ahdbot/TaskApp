@@ -95,3 +95,11 @@
   font-size: 12px;
   color: rgb(164, 213, 255);
 }
+
+
+.Light .edit-task .title-input,
+.Light .fa-pen-to-square,
+.Light label,
+.Light .time {
+  color: rgb(65, 71, 84);
+}

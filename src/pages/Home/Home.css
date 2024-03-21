@@ -31,7 +31,7 @@
 }
 
 .home .all-tasks .one-task:hover {
-  border-left: 20px solid blue;
+  border-left: 8px solid blue;
   cursor: pointer;
 }
 
@@ -69,4 +69,9 @@
 
 .home .add-task-btn .fa-plus {
   font-size: 14px;
+}
+
+.Light .home h2,
+.Light .home ul li {
+  color: rgb(65, 71, 84);
 }
