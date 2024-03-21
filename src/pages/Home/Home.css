@@ -72,20 +72,45 @@
 }
 
 .Light .home h2,
-.Light .home ul li {
+.Light .home ol li {
   color: rgb(65, 71, 84);
 }
 
 .Light .home .all-tasks .one-task {
   border: 2px solid black;
 }
+
+.home .model-content {
+  margin-top: 55px;
+  height: 100%;
+  text-align: left;
+}
 .home .modal {
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .home .modal li {
   font-size: 13px;
   color: #333;
-  list-style-type: circle;
+  list-style-type: decimal;
   list-style-position: inside;
   margin-bottom: 11px;
+}
+
+.home .show-message {
+  background-color: whitesmoke;
+  font-size: 18px;
+  color: #1b1b1b;
+  padding: 8px 30px;
+  font-weight: normal;
+  border-radius: 5px;
+  position: fixed;
+  top: 100px;
+  right: 10px;
+  transition: 1s;
+}
+
+.home .fa-circle-check {
+  color: teal;
+  margin-left: 5px;
+  position: fixed;
 }

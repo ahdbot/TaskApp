@@ -8,6 +8,7 @@ import { auth } from "../../firebase/config";
 import { Link } from "react-router-dom";
 import { sendEmailVerification } from "firebase/auth";
 import Loading from "react-loading";
+
 // Level 3
 import "./Home.css";
 import Modal from "../../shared/Modal";
@@ -15,15 +16,13 @@ import { useState } from "react";
 import { doc, setDoc } from "firebase/firestore";
 
 const Home = () => {
+  const [showLoading, setshowLoading] = useState(false);
   const [taskTitle, settitle] = useState("");
   const [array, setarray] = useState([]);
   const [subTask, setsubTask] = useState("");
+  const [showMessage, setshowMessage] = useState(false);
 
-  const addBTN = (params) => {
-    array.push(subTask);
-    // console.log(array);
-    setsubTask("");
-  };
+
 
   const [user, loading, error] = useAuthState(auth);
 
@@ -44,7 +43,23 @@ const Home = () => {
   const closeModal = () => {
     setshowModal(false);
   };
+  /// function of modal {
 
+  const titleinput = () => {
+    
+  }
+
+  const detailsinput = () => {
+    
+  }
+
+  const addBTN = (params) => {
+    array.push(subTask);
+    // console.log(array);
+    setsubTask("");
+  };
+
+  
   if (error) {
     return <Error />;
   }
@@ -172,7 +187,7 @@ const Home = () => {
 
             {showModal && (
               <Modal closeModal={closeModal}>
-                <div style={{ textAlign: "left" }}>
+                <div  className="model-content" >
                   <input
                     onChange={(eo) => {
                       settitle(eo.target.value);
@@ -202,18 +217,19 @@ const Home = () => {
                     </button>
                   </div>
 
-                  <ul>
+                  <ol>
                     {array.map((item) => (
                       <li key={item}> {item} </li>
                     ))}
-                  </ul>
+                  </ol>
 
                   <button
+                  style={{marginBottom : "22px"}}
                     onClick={async (eo) => {
                       addBTN();
                       eo.preventDefault();
 
-                      console.log("waiting .........");
+                      setshowLoading(true);
 
                       const taskId = new Date().getTime();
                       await setDoc(doc(db, user.uid, `${taskId}`), {
@@ -222,17 +238,41 @@ const Home = () => {
                         id: taskId,
                       });
 
-                      console.log("done .........");
+                      setshowLoading(false);
 
                       settitle("");
                       setarray([]);
+
+                      setshowModal(false);
+                      setshowMessage(true);
+
+                      setTimeout(() => {
+                        setshowMessage(false);
+                      }, 4000);
                     }}
                   >
-                    Submit
+                    {showLoading ? (
+                      <Loading
+                        type={"spin"}
+                        color={"white"}
+                        height={20}
+                        width={20}
+                      />
+                    ) : (
+                      "submit"
+                    )}
                   </button>
                 </div>
               </Modal>
             )}
+
+            <p
+              style={{ right: showMessage ? "20px" : "-100vw" }}
+              className="show-message"
+            >
+              Task Added Successfully
+              <i class="fa-regular fa-circle-check"></i>
+            </p>
           </main>
 
           <Footer />
