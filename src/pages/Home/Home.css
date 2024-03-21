@@ -31,7 +31,7 @@
 }
 
 .home .all-tasks .one-task:hover {
-  border-left: 8px solid blue;
+  border-left: 8px solid gray;
   cursor: pointer;
 }
 
@@ -74,4 +74,18 @@
 .Light .home h2,
 .Light .home ul li {
   color: rgb(65, 71, 84);
+}
+
+.Light .home .all-tasks .one-task {
+  border: 2px solid black;
+}
+.home .modal {
+  overflow-y: scroll;
+}
+.home .modal li {
+  font-size: 13px;
+  color: #333;
+  list-style-type: circle;
+  list-style-position: inside;
+  margin-bottom: 11px;
 }

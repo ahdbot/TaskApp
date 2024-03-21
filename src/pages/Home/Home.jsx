@@ -1,31 +1,53 @@
 import Header from "../../comp/Header";
 import Footer from "../../comp/Footer";
-import Error from "../Error";
 
+import Error from "../Error";
 import { Helmet } from "react-helmet-async";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase/config";
 import { Link } from "react-router-dom";
 import { sendEmailVerification } from "firebase/auth";
-// import ReactLoading from "react-loading";
 import Loading from "react-loading";
+// Level 3
 import "./Home.css";
+import Modal from "../../shared/Modal";
+import { useState } from "react";
 
-// LEVEL 2
-
-// level 3
-import "./Home.css";
-const SendAgine = () => {
-  sendEmailVerification(auth.currentUser).then(() => {
-    console.log("Email Verification sent!");
-  });
-};
 const Home = () => {
+  const [array, setarray] = useState([]);
+  const [subTask, setsubTask] = useState("");
+
+  const addBTN = (params) => {
+    array.push(subTask);
+    // console.log(array);
+    setsubTask("");
+  };
+
   const [user, loading, error] = useAuthState(auth);
-  console.log(user);
+
+
+  const sendAgain = () => {
+    sendEmailVerification(auth.currentUser).then(() => {
+      console.log("Email verification sent!");
+
+      // ...
+    });
+  };
+
+  // LEVEL3
+  const [showModal, setshowModal] = useState(false);
+  const forgotPassword = () => {
+    setshowModal(true);
+  };
+
+  const closeModal = () => {
+    setshowModal(false);
+  };
+
   if (error) {
     return <Error />;
   }
+
   if (loading) {
     return <Loading />;
   }
@@ -35,18 +57,25 @@ const Home = () => {
       <>
         <Helmet>
           <title>HOME Page</title>
-          <meta name="description" content="HOMEEEEEEEEEEEE" />
+          <style type="text/css">{`.Light main h1 span{color: #222}   `}</style>
         </Helmet>
 
         <Header />
 
         <main>
+          <h1 style={{ fontSize: "28px" }}>
+            {" "}
+            <span>Welcome to React Level 2 🔥🔥🔥</span>{" "}
+          </h1>
           <p className="pls">
             Please{" "}
-            <Link style={{ fontSize: "30px" }} to={"/edit-task"}>
+            <Link style={{ fontSize: "30px" }} to="/signin">
               sign in
             </Link>{" "}
-            to continue... <span>🧡</span>
+            to continue...{" "}
+            <span>
+              <i className="fa-solid fa-heart"></i>
+            </span>
           </p>
         </main>
 
@@ -62,26 +91,6 @@ const Home = () => {
           <Helmet>
             <title>HOME Page</title>
             <meta name="description" content="HOMEEEEEEEEEEEE" />
-            <style type="text/css">{` 
-         main{
-          flex-direction: column;
-          align-items: flex-start;
-  
-    width: fit-content;
-    margin: auto;
-        }
-
-        .delete{
-          margin-top: 25px;
-        background-color:  #dc3545;
-        padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: 0.25rem;
-    border-color: #dc3545;
-        }
-        
-        `}</style>
           </Helmet>
 
           <Header />
@@ -89,12 +98,16 @@ const Home = () => {
           <main>
             <p>
               {" "}
-              Welcome: {user.displayName} <span>🧡</span>
+              Welcome: {user.displayName}{" "}
+              <span>
+                <i className="fa-solid fa-heart"></i>{" "}
+              </span>
             </p>
+
             <p>Please verify your email to continue ✋ </p>
             <button
               onClick={() => {
-                SendAgine();
+                sendAgain();
               }}
               className="delete"
             >
@@ -116,10 +129,12 @@ const Home = () => {
 
           <Header />
 
-          <main className=" home">
-            <section className=" parent-of-btns flex mtt">
-              <button>Newest First</button>
-              <button>Oldest first </button>
+          <main className="home">
+            {/* OPIONS (filtered data) */}
+            <section className="parent-of-btns flex mtt">
+              <button>Newest first</button>
+
+              <button>Oldest first</button>
               <select id="browsers">
                 <option value="ddddd"> All Tasks </option>
                 <option value="dddddd"> Completed </option>
@@ -127,25 +142,80 @@ const Home = () => {
               </select>
             </section>
 
-            <section className="flex all-tasks">
+            {/* SHOW all tasks */}
+            <section className="flex all-tasks mt">
               <article dir="auto" className="one-task">
-             <Link to={"/edittask"}>
-             <h2> New Task</h2>
-                <ul>
-                  <li>Sub task 1</li>
-                  <li>Sub task 2</li>
-                </ul>
-                <p className="time">a day ago</p>
-             
-             </Link>
+                <Link to={"/edit-task"}>
+                  <h2> New Task </h2>
+                  <ul>
+                    <li>Sub task 1 </li>
+                    <li> Sub task 2</li>
+                  </ul>
+
+                  <p className="time">a day ago</p>
+                </Link>
               </article>
             </section>
 
+            {/* Add new task BTN */}
             <section className="mt">
-              <button className="add-task-btn  ">
-                Add new Task <i class="fa-solid fa-plus"></i>
+              <button
+                onClick={() => {
+                  setshowModal(true);
+                }}
+                className="add-task-btn"
+              >
+                Add new task <i className="fa-solid fa-plus"></i>
               </button>
             </section>
+
+            {showModal && (
+              <Modal closeModal={closeModal}>
+                <div style={{ textAlign: "left" }}>
+                  <input
+                    onChange={(eo) => {}}
+                    required
+                    placeholder=" Add title : "
+                    type="text"
+                  />
+
+                  <div>
+                    <input
+                      onChange={(eo) => {
+                        setsubTask(eo.target.value);
+                      }}
+                      placeholder=" details "
+                      type="email"
+                      value={subTask}
+                    />
+
+                    <button
+                      onClick={(eo) => {
+                        eo.preventDefault();
+                        addBTN();
+                      }}
+                    >
+                      Add
+                    </button>
+                  </div>
+
+                  <ul>
+                    {array.map((item) => (
+                      <li key={item}> {item} </li>
+                    ))}
+                  </ul>
+
+                  <button
+                    onClick={(eo) => {
+                      addBTN();
+                      eo.preventDefault();
+                    }}
+                  >
+                    Submit
+                  </button>
+                </div>
+              </Modal>
+            )}
           </main>
 
           <Footer />

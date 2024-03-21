@@ -1,7 +1,6 @@
 .myfooter footer {
-  background-color: #1b1b1b;
+  background-color: teal;
   padding: 20px 0;
   text-align: center;
-  font-size: 18px;
+  font-size: 28px;
 }
-

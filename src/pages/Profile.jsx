@@ -53,7 +53,7 @@ const Profile = () => {
   if (error) {
     return (
       <div>
-        <p>Error: {error}</p>
+        <p>Error: {error.message}</p>
       </div>
     );
   }

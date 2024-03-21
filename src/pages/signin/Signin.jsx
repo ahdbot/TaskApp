@@ -1,4 +1,6 @@
 import Header from "../../comp/Header";
+
+import Modal from "../../shared/Modal";
 import Footer from "../../comp/Footer";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
@@ -9,6 +11,7 @@ import {
 import { auth } from "../../firebase/config";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import "./signin.css";
 
 const Signin = () => {
@@ -18,13 +21,19 @@ const Signin = () => {
   const [password, setpassword] = useState("");
   const [hasError, sethasError] = useState(false);
   const [firebaseError, setfirebaseError] = useState("");
-
-  const [ShowModel, setShowModel] = useState(true);
+  const [CloseModal, setCloseModal] = useState(true);
   const [showSendEmail, setshowSendEmail] = useState(false);
+  const [showModal, setshowModal] = useState(false);
 
-  const ForgetPassword = () => {
-    setShowModel(true);
+  const forgotPassword = () => {
+    setshowModal(true);
   };
+
+  const closeModal = () => {
+    setshowModal(false);
+  };
+
+
   const SignInBTN = (eo) => {
     eo.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
@@ -72,52 +81,40 @@ const Signin = () => {
       <Header />
 
       <main>
-        {ShowModel && (
-          <div className="parent-of-model">
-            <form className={`model`}>
-              <div
-                onClick={() => {
-                  setShowModel(false);
-                }}
-                className="close"
-              >
-                <i className="fa-solid fa-xmark"></i>
-              </div>
+        {showModal && (
+          <Modal closeModal={closeModal}>
+            <input
+              onChange={(eo) => {
+                setresetPass(eo.target.value);
+              }}
+              required
+              placeholder=" E-mail : "
+              type="email"
+            />
+            <button
+              onClick={(eo) => {
+                eo.preventDefault();
 
-              <input
-                onChange={(eo) => {
-                  setresetPass(eo.target.value);
-                }}
-                required
-                placeholder=" E-mail : "
-                type="email"
-              />
-              <button
-                onClick={(eo) => {
-                  eo.preventDefault();
-                  sendPasswordResetEmail(auth, resetPass)
-                    .then(() => {
-                      console.log("Send Email");
-                      setshowSendEmail(true);
-                    })
-                    .catch((error) => {
-                      const errorCode = error.code;
-
-                      console.log(errorCode);
-                      // ..
-                    });
-                }}
-              >
-                Reset email
-              </button>
-              {showSendEmail && (
-                <p className="check-email">
-                  Please check your email to reset your password.
-                </p>
-              )}
-            </form>
-          </div>
+                sendPasswordResetEmail(auth, resetPass)
+                  .then(() => {
+                    console.log("send email");
+                    setshowSendEmail(true);
+                  })
+                  .catch((error) => {
+                    // ..
+                  });
+              }}
+            >
+              Reset Password
+            </button>
+            {showSendEmail && (
+              <p className="check-email">
+                Please check your email to reset your password.
+              </p>
+            )}
+          </Modal>
         )}
+
         <form>
           <input
             onChange={(eo) => {
@@ -150,7 +147,7 @@ const Signin = () => {
 
           <p
             onClick={() => {
-              ForgetPassword();
+              forgotPassword();
             }}
             className="forgot-pass mtt"
           >
