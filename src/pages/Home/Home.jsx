@@ -11,7 +11,7 @@ import Loading from "react-loading";
 
 // Level 3
 import "./Home.css";
-import Modal from "../../shared/Modal";
+import HomeModal from "./Model";
 import { useState } from "react";
 import { doc, setDoc } from "firebase/firestore";
 
@@ -21,8 +21,6 @@ const Home = () => {
   const [array, setarray] = useState([]);
   const [subTask, setsubTask] = useState("");
   const [showMessage, setshowMessage] = useState(false);
-
-
 
   const [user, loading, error] = useAuthState(auth);
 
@@ -36,30 +34,57 @@ const Home = () => {
 
   // LEVEL3
   const [showModal, setshowModal] = useState(false);
-  const forgotPassword = () => {
-    setshowModal(true);
-  };
+  // const forgotPassword = () => {
+  //   setshowModal(true);
+  // };
+
+  // / function of modal
 
   const closeModal = () => {
     setshowModal(false);
   };
-  /// function of modal {
 
-  const titleinput = () => {
-    
-  }
+  const titleinput = (eo) => {
+    settitle(eo.target.value);
+  };
 
-  const detailsinput = () => {
-    
-  }
+  const detailsinput = (eo) => {
+    setsubTask(eo.target.value);
+  };
 
-  const addBTN = (params) => {
+  const addBTN = (eo) => {
+    eo.preventDefault();
     array.push(subTask);
     // console.log(array);
     setsubTask("");
   };
 
-  
+  const submitBTn = async (eo) => {
+    submitBTn();
+    eo.preventDefault();
+
+    setshowLoading(true);
+
+    const taskId = new Date().getTime();
+    await setDoc(doc(db, user.uid, `${taskId}`), {
+      title: taskTitle,
+      details: array,
+      id: taskId,
+    });
+
+    setshowLoading(false);
+
+    settitle("");
+    setarray([]);
+
+    setshowModal(false);
+    setshowMessage(true);
+
+    setTimeout(() => {
+      setshowMessage(false);
+    }, 4000);
+  };
+
   if (error) {
     return <Error />;
   }
@@ -186,84 +211,17 @@ const Home = () => {
             </section>
 
             {showModal && (
-              <Modal closeModal={closeModal}>
-                <div  className="model-content" >
-                  <input
-                    onChange={(eo) => {
-                      settitle(eo.target.value);
-                    }}
-                    required
-                    placeholder=" Add title : "
-                    type="text"
-                  />
-
-                  <div>
-                    <input
-                      onChange={(eo) => {
-                        setsubTask(eo.target.value);
-                      }}
-                      placeholder=" details "
-                      type="email"
-                      value={subTask}
-                    />
-
-                    <button
-                      onClick={(eo) => {
-                        eo.preventDefault();
-                        addBTN();
-                      }}
-                    >
-                      Add
-                    </button>
-                  </div>
-
-                  <ol>
-                    {array.map((item) => (
-                      <li key={item}> {item} </li>
-                    ))}
-                  </ol>
-
-                  <button
-                  style={{marginBottom : "22px"}}
-                    onClick={async (eo) => {
-                      addBTN();
-                      eo.preventDefault();
-
-                      setshowLoading(true);
-
-                      const taskId = new Date().getTime();
-                      await setDoc(doc(db, user.uid, `${taskId}`), {
-                        title: taskTitle,
-                        details: array,
-                        id: taskId,
-                      });
-
-                      setshowLoading(false);
-
-                      settitle("");
-                      setarray([]);
-
-                      setshowModal(false);
-                      setshowMessage(true);
-
-                      setTimeout(() => {
-                        setshowMessage(false);
-                      }, 4000);
-                    }}
-                  >
-                    {showLoading ? (
-                      <Loading
-                        type={"spin"}
-                        color={"white"}
-                        height={20}
-                        width={20}
-                      />
-                    ) : (
-                      "submit"
-                    )}
-                  </button>
-                </div>
-              </Modal>
+              <HomeModal
+                closeModal={closeModal}
+                titleInput={titleinput}
+                detailsInput={detailsinput}
+                addBTN={addBTN}
+                submitBTN={submitBTn}
+                taskTitle={taskTitle}
+                subTask={subTask}
+                array={array}
+                showLoading={showLoading}
+              />
             )}
 
             <p
