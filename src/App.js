@@ -9,6 +9,8 @@ import { useContext } from "react";
 import ThemeContext from "./context/ThemeContext";
 import Signup from "./pages/Singup";
 import Signin from "./pages/Signin";
+import EditTask from "./pages/edit-task/editTask";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,6 +21,11 @@ const router = createBrowserRouter([
   {
     path: "/about",
     element: <About />,
+  },
+
+  {
+    path: "/EditTask",
+    element: <EditTask />,
   },
 
 

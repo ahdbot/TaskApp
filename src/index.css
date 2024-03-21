@@ -28,6 +28,10 @@ main {
   margin-top: 3em;
 }
 
+.center {
+  text-align: center;
+}
+
 .Light main p,
 .Light main h6,
 .Light main time {

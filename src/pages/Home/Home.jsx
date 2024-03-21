@@ -43,7 +43,7 @@ const Home = () => {
         <main>
           <p className="pls">
             Please{" "}
-            <Link style={{ fontSize: "30px" }} to="/signin">
+            <Link style={{ fontSize: "30px" }} to={"/edit-task"}>
               sign in
             </Link>{" "}
             to continue... <span>🧡</span>
@@ -129,36 +129,15 @@ const Home = () => {
 
             <section className="flex all-tasks">
               <article dir="auto" className="one-task">
-                <h2> New Task</h2>
+             <Link to={"/edittask"}>
+             <h2> New Task</h2>
                 <ul>
                   <li>Sub task 1</li>
                   <li>Sub task 2</li>
                 </ul>
                 <p className="time">a day ago</p>
-              </article>
-              <article dir="auto" className="one-task">
-                <h2> New Task</h2>
-                <ul>
-                  <li>Sub task 1</li>
-                  <li>Sub task 2</li>
-                </ul>
-                <p className="time">a day ago</p>
-              </article>
-              <article dir="auto" className="one-task">
-                <h2> New Task</h2>
-                <ul>
-                  <li>Sub task 1</li>
-                  <li>Sub task 2</li>
-                </ul>
-                <p className="time">a day ago</p>
-              </article>
-              <article dir="auto" className="one-task">
-                <h2> شراء جوافة</h2>
-                <ul>
-                  <li> كيلو جوافة من السوق3 </li>
-                  <li> كيلو جوافة من السوق3 </li>
-                </ul>
-                <p className="time">a day ago</p>
+             
+             </Link>
               </article>
             </section>
 
