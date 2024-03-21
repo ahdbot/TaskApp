@@ -1,6 +1,6 @@
 import Header from "../../comp/Header";
 import Footer from "../../comp/Footer";
-
+import { db } from "../../firebase/config";
 import Error from "../Error";
 import { Helmet } from "react-helmet-async";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -12,8 +12,10 @@ import Loading from "react-loading";
 import "./Home.css";
 import Modal from "../../shared/Modal";
 import { useState } from "react";
+import { doc, setDoc } from "firebase/firestore";
 
 const Home = () => {
+  const [taskTitle, settitle] = useState("");
   const [array, setarray] = useState([]);
   const [subTask, setsubTask] = useState("");
 
@@ -24,7 +26,6 @@ const Home = () => {
   };
 
   const [user, loading, error] = useAuthState(auth);
-
 
   const sendAgain = () => {
     sendEmailVerification(auth.currentUser).then(() => {
@@ -173,7 +174,9 @@ const Home = () => {
               <Modal closeModal={closeModal}>
                 <div style={{ textAlign: "left" }}>
                   <input
-                    onChange={(eo) => {}}
+                    onChange={(eo) => {
+                      settitle(eo.target.value);
+                    }}
                     required
                     placeholder=" Add title : "
                     type="text"
@@ -206,9 +209,23 @@ const Home = () => {
                   </ul>
 
                   <button
-                    onClick={(eo) => {
+                    onClick={async (eo) => {
                       addBTN();
                       eo.preventDefault();
+
+                      console.log("waiting .........");
+
+                      const taskId = new Date().getTime();
+                      await setDoc(doc(db, user.uid, `${taskId}`), {
+                        title: taskTitle,
+                        details: array,
+                        id: taskId,
+                      });
+
+                      console.log("done .........");
+
+                      settitle("");
+                      setarray([]);
                     }}
                   >
                     Submit
