@@ -9,7 +9,7 @@ import { useContext } from "react";
 import ThemeContext from "./context/ThemeContext";
 import Signup from "./pages/Singup";
 import Signin from "./pages/signin/Signin";
-import EditTask from "./pages/edit-task/editTask";
+import EditTask from "./pages/edit-task/EditTask";
 
 const router = createBrowserRouter([
   {
@@ -24,10 +24,9 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "/EditTask",
+    path: "/EditTask/:stringId",
     element: <EditTask />,
   },
-
 
   {
     path: "/signin",

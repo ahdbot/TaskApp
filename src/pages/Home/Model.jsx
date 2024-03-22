@@ -1,8 +1,7 @@
 import React from "react";
 import Loading from "react-loading";
 import Modal from "../../shared/Modal";
-
-
+import "./Home.css";
 const HomeModal = ({
   closeModal,
   titleInput,
@@ -31,12 +30,13 @@ const HomeModal = ({
             onChange={(eo) => {
               detailsInput(eo);
             }}
-            placeholder=" details "
+            placeholder=" details : "
             type="text"
             value={subTask}
           />
 
           <button
+            style={{ marginLeft: 29 }}
             onClick={(eo) => {
               addBTN(eo);
             }}
@@ -45,11 +45,11 @@ const HomeModal = ({
           </button>
         </div>
 
-        <ol>
+        <ul>
           {array.map((item) => (
             <li key={item}> {item} </li>
           ))}
-        </ol>
+        </ul>
 
         <button
           style={{ marginBottom: "22px" }}

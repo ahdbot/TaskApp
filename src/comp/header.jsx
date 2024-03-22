@@ -17,7 +17,7 @@ const Header = () => {
     <div className="myheader">
       <header className="hide-when-mobile ali ">
         <h1>
-          <Link to="/"> c4a.dev </Link>
+          <Link to="/"> Task App </Link>
         </h1>
         {/* <button
           onClick={() => {

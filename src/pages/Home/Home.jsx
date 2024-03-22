@@ -11,9 +11,11 @@ import Loading from "react-loading";
 
 // Level 3
 import "./Home.css";
+
 import HomeModal from "./Model";
 import { useState } from "react";
 import { doc, setDoc } from "firebase/firestore";
+import AllTasksSection from "./AllTasksSection";
 
 const Home = () => {
   const [showLoading, setshowLoading] = useState(false);
@@ -42,6 +44,8 @@ const Home = () => {
 
   const closeModal = () => {
     setshowModal(false);
+    settitle("");
+    setarray([]);
   };
 
   const titleinput = (eo) => {
@@ -54,14 +58,19 @@ const Home = () => {
 
   const addBTN = (eo) => {
     eo.preventDefault();
-    array.push(subTask);
+
+    if (!array.includes(subTask)) {
+      array.push(subTask);
+    }
+
     // console.log(array);
     setsubTask("");
   };
 
   const submitBTn = async (eo) => {
-    submitBTn();
+
     eo.preventDefault();
+    submitBTn();
 
     setshowLoading(true);
 
@@ -70,6 +79,7 @@ const Home = () => {
       title: taskTitle,
       details: array,
       id: taskId,
+      completed: false,
     });
 
     setshowLoading(false);
@@ -170,11 +180,10 @@ const Home = () => {
 
           <Header />
 
-          <main className="home">
+          <main className="home ">
             {/* OPIONS (filtered data) */}
-            <section className="parent-of-btns flex mtt">
+            <section className="parent-of-btns flex mtt ">
               <button>Newest first</button>
-
               <button>Oldest first</button>
               <select id="browsers">
                 <option value="ddddd"> All Tasks </option>
@@ -184,6 +193,9 @@ const Home = () => {
             </section>
 
             {/* SHOW all tasks */}
+
+            <AllTasksSection user={user} />
+
             <section className="flex all-tasks mt">
               <article dir="auto" className="one-task">
                 <Link to={"/edit-task"}>

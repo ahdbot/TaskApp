@@ -2,13 +2,30 @@
 }
 
 .home .parent-of-btns button {
-  background-color: #3467c2;
-  font-size: 16px;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 5px;
-  margin-right: 5px;
+  appearance: button;
+  background-color: #1652f0;
+  border: 1px solid #1652f0;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: Graphik, -apple-system, system-ui, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  line-height: 1.15;
+  overflow: visible;
+  padding: 12px 16px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transition: all 80ms ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  margin-right: 25px;
 }
+
 
 .home select {
   background-color: #666;
@@ -28,6 +45,7 @@
   height: 141px;
   border-radius: 5px;
   transition: 0.8s;
+  position: relative;
 }
 
 .home .all-tasks .one-task:hover {
@@ -50,12 +68,16 @@
   margin-left: 11px;
 }
 
-.home .all-tasks .one-task .time {
+.home .all-tasks .one-task .time time {
   font-size: 11px;
   text-align: right;
   margin-right: 9px;
+  font-weight: normal;
   color: rgba(164, 213, 255);
-  line-height: 15px;
+
+  position: absolute;
+  bottom: 7px;
+  right: 9px;
 }
 
 .home .add-task-btn {
@@ -71,6 +93,11 @@
   font-size: 14px;
 }
 
+.home h5 {
+  color: #1b1b1b;
+  text-align: center;
+  margin-bottom: 20px;
+}
 .Light .home h2,
 .Light .home ol li {
   color: rgb(65, 71, 84);
@@ -78,6 +105,10 @@
 
 .Light .home .all-tasks .one-task {
   border: 2px solid black;
+}
+
+.Light .home .all-tasks .one-task li {
+  color: #1b1b1b;
 }
 
 .home .model-content {
@@ -91,7 +122,7 @@
 .home .modal li {
   font-size: 13px;
   color: #333;
-  list-style-type: decimal;
+  list-style-type: square;
   list-style-position: inside;
   margin-bottom: 11px;
 }
@@ -113,4 +144,9 @@
   color: teal;
   margin-left: 5px;
   position: fixed;
+}
+
+.home .fa-trash {
+  color: red;
+  margin-left: 100px;
 }
