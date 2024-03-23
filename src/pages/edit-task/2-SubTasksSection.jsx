@@ -47,7 +47,7 @@ const SubTasksSection = ({ user, stringId, completedCheckbox, trashIcon }) => {
         </ul>
 
         {showAddNewTask && (
-          <div className="add-new-task flex">
+          <form style={{ flexDirection: "row" }} className="add-new-task flex">
             <input
               value={subTitle}
               onChange={(eo) => {
@@ -59,12 +59,12 @@ const SubTasksSection = ({ user, stringId, completedCheckbox, trashIcon }) => {
             />
             <button
               onClick={async (eo) => {
+                eo.preventDefault();
+                setsubTitle("");
                 await updateDoc(doc(db, user.uid, stringId), {
-                  
                   details: arrayUnion(subTitle),
                 });
                 eo.preventDefault();
-                setsubTitle("");
               }}
               className="add"
             >
@@ -72,14 +72,15 @@ const SubTasksSection = ({ user, stringId, completedCheckbox, trashIcon }) => {
             </button>
 
             <button
-              onClick={() => {
+              onClick={(eo) => {
+                eo.preventDefault();
                 setshowAddNewTask(false);
               }}
               className="cancel"
             >
               cancel{" "}
             </button>
-          </div>
+          </form>
         )}
 
         <div className="center mtt">

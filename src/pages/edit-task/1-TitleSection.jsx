@@ -17,7 +17,15 @@ const SubTasksSection = ({ user, stringId, titleInput }) => {
   }
   if (loading) {
     return (
-      <ReactLoading type={"spin"} color={"blue"} height={200} width={200} />
+       <main>
+           <ReactLoading
+     
+     type={"spin"}
+     color={"blue"}
+     height={200}
+     width={200}
+   />
+       </main>
     );
   }
 

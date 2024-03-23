@@ -37,6 +37,7 @@
   flex-wrap: wrap;
 }
 
+
 .home .all-tasks .one-task {
   border: 2px solid white;
   margin: 40px 20px;
@@ -67,7 +68,7 @@
   margin-left: 11px;
 }
 
-.home .all-tasks .one-task .time  time {
+.home .all-tasks .one-task .time time {
   font-size: 11px;
   text-align: right;
   margin-right: 9px;
