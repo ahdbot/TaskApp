@@ -14,8 +14,7 @@ const Footer = () => {
   return (
     <div className="myfooter">
       <footer className="ali   ">
-        Designed and developed by Ahmad Bajaber
-        <p>{currentDate} 	&copy;</p>
+        <p> Designed and developed by Ahmad Bajaber {currentDate} &copy;</p>
       </footer>
     </div>
   );

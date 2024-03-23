@@ -1,17 +1,20 @@
 import React from "react";
 import { useDocument } from "react-firebase-hooks/firestore";
-import { doc } from "firebase/firestore";
+import { doc , updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import Moment from "react-moment";
 
-const SubTasksSection = ({ user, stringId }) => {
+const SubTasksSection = ({ user, stringId , titleInput}) => {
   const [value, loading, error] = useDocument(doc(db, user.uid, stringId));
 
   if (value) {
     return (
       <section className="title center">
         <h1>
-          <input
+        <input
+        onChange={ async (eo) => {
+          titleInput(eo)
+        }}
             defaultValue={value.data().title}
             className="title-input center"
             type="text"
@@ -21,6 +24,6 @@ const SubTasksSection = ({ user, stringId }) => {
       </section>
     );
   }
-  };
+};
 
 export default SubTasksSection;

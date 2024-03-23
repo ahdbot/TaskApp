@@ -81,7 +81,7 @@
 
 .edit-task .card-task:hover {
   background-color: rgb(74, 82, 97);
-  border-left: 4px solid wheat;
+  border-left: 20px solid wheat;
 }
 
 .edit-task .fa-trash {
@@ -114,4 +114,24 @@
 .Light label,
 .Light .time {
   color: rgb(65, 71, 84);
+}
+
+.edit-task .add-new-task {
+  box-shadow: 0 5px 30px 0 rgb(0 0 0 / 15%);
+  background-color: rgb(65, 71, 84);
+  border-radius: 5px;
+}
+
+.edit-task input.add-task {
+  margin: 12px 0 12px 12px;
+}
+
+.edit-task .add,
+.edit-task .cancel {
+  background-color: teal;
+  font-size: 16px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  margin-left: 11px;
 }

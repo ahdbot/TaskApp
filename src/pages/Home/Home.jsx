@@ -68,7 +68,6 @@ const Home = () => {
   };
 
   const submitBTn = async (eo) => {
-
     eo.preventDefault();
     submitBTn();
 
@@ -205,7 +204,7 @@ const Home = () => {
                     <li> Sub task 2</li>
                   </ul>
 
-                  <p className="time">a day ago</p>
+                  <p className="time"><time>a day ago</time></p>
                 </Link>
               </article>
             </section>

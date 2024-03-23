@@ -32,6 +32,10 @@ main {
   text-align: center;
 }
 
+.center1 {
+  margin: auto;
+}
+
 .Light main p,
 .Light main h6,
 .Light main time {

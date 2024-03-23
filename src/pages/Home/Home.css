@@ -26,7 +26,6 @@
   margin-right: 25px;
 }
 
-
 .home select {
   background-color: #666;
   padding: 7px 15px;
@@ -68,7 +67,7 @@
   margin-left: 11px;
 }
 
-.home .all-tasks .one-task .time time {
+.home .all-tasks .one-task .time  time {
   font-size: 11px;
   text-align: right;
   margin-right: 9px;
