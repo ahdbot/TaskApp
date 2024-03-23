@@ -195,7 +195,7 @@ const Home = () => {
 
             <AllTasksSection user={user} />
 
-            <section className="flex all-tasks mt">
+            {/* <section className="flex all-tasks mt">
               <article dir="auto" className="one-task">
                 <Link to={"/edit-task"}>
                   <h2> New Task </h2>
@@ -207,7 +207,7 @@ const Home = () => {
                   <p className="time"><time>a day ago</time></p>
                 </Link>
               </article>
-            </section>
+            </section> */}
 
             {/* Add new task BTN */}
             <section className="mt">

@@ -23,6 +23,10 @@
   margin-top: 11px;
 }
 
+.edit-task .title-input:focus {
+  outline: none;
+}
+
 .edit-task .fa-pen-to-square {
   font-size: 18px;
   transition: 0.2s;
@@ -139,6 +143,12 @@
 
 .edit-task input.add-task {
   margin: 12px 0 12px 12px;
+}
+
+.edit-task .fa-pen-to-square {
+  font-size: 18px;
+  transition: 0.2s;
+  margin-left: 11px;
 }
 
 .edit-task .add,

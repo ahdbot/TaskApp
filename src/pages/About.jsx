@@ -1,18 +1,17 @@
-import Header from "../comp/header"
+import Header from "../comp/header";
 import Footer from "../comp/Footer";
 
 import { Helmet } from "react-helmet-async";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase/config";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 const About = () => {
+  const inputElement = useRef(null);
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
-
-
 
   useEffect(() => {
     if (!user) {
@@ -52,11 +51,16 @@ const About = () => {
           </Helmet>
           <Header />
           <main>
-            {/* {array.map((item) => {
-              <div key={item}>
-                <h3> {item} </h3>;
-              </div>;
-            })} */}
+            <button
+              onClick={(eo) => {
+                inputElement.current.Foucs();
+              }}
+              className="delete"
+            >
+              delete
+            </button>
+
+            <input ref={inputElement} type="text" name="" id="aaaa" />
           </main>
           <Footer />
         </>
