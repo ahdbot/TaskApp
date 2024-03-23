@@ -1,4 +1,4 @@
-import Header from "../../comp/Header";
+import Header from "../../comp/header";
 import Footer from "../../comp/Footer";
 import { db } from "../../firebase/config";
 import Error from "../Error";

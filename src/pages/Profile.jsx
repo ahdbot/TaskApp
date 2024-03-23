@@ -1,4 +1,4 @@
-import Header from "../comp/Header";
+import Header from "../comp/header";
 import Footer from "../comp/Footer";
 
 import { Helmet } from "react-helmet-async";

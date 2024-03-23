@@ -58,7 +58,7 @@ const HomeModal = ({
           }}
         >
           {showLoading ? (
-            <Loading type={"spin"} color={"white"} height={20} width={20} />
+            <Loading type={"spin"} color={"blue"} height={20} width={20} />
           ) : (
             "submit"
           )}

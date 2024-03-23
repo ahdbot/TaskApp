@@ -1,4 +1,4 @@
-import Header from "../../comp/Header";
+import Header from "../../comp/header";
 
 import Modal from "../../shared/Modal";
 import Footer from "../../comp/Footer";

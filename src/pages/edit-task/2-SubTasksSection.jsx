@@ -10,17 +10,6 @@ const SubTasksSection = ({ user, stringId, completedCheckbox, trashIcon }) => {
 
   const [subTitle, setsubTitle] = useState("");
 
-  if (loading) {
-    return (
-      <ReactLoading
-        className="center"
-        type={"spin"}
-        color={"white"}
-        height={77}
-        width={77}
-      />
-    );
-  }
   if (value) {
     return (
       <section className="sub-task mtt">

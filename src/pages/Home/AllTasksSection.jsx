@@ -16,7 +16,7 @@ const AllTasksSection = ({ user }) => {
   if (loading) {
     return (
       <section className="mttt">
-        <ReactLoading type={"spin"} color={"white"} height={77} width={77} />
+        <ReactLoading type={"spin"} color={"blue"} height={77} width={77} />
       </section>
     );
   }
