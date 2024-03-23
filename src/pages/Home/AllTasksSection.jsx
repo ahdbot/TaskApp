@@ -1,20 +1,33 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCollection } from "react-firebase-hooks/firestore";
-import { collection, query, orderBy } from "firebase/firestore";
+import { collection, query, orderBy, where } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import ReactLoading from "react-loading";
 import Moment from "react-moment";
 
 const AllTasksSection = ({ user }) => {
+  const allTasks = query(collection(db, user.uid), orderBy("id"));
+  const completedTask =    query(
+    collection(db, user.uid),
+    where("completed", "==", true)
+  )
+
+  const notCompletedTask =  query(
+    collection(db, user.uid),
+    where("completed", "==", false)
+  )
   const [initialData, setinitialData] = useState(
-    query(collection(db, user.uid), orderBy("id", "asc"))
+    
+    query(collection(db, user.uid), orderBy("comepleted", "asc"))
   );
   const [value, loading, error] = useCollection(initialData);
 
   const [isfullOpacity, setisfullOpacity] = useState(false);
+
+  const [selectvalue, setselectvalue] = useState("");
   if (error) {
-    return <h1>ERROR</h1>;
+    return <h1>Erorr : {error.message}</h1>;
   }
 
   if (loading) {
@@ -32,32 +45,58 @@ const AllTasksSection = ({ user }) => {
           style={{ justifyContent: "center" }}
           className="parent-of-btns flex mtt "
         >
-          <button
-            style={{ opacity: isfullOpacity ? "1" : "0.3" }}
-            onClick={() => {
-              setisfullOpacity(true);
-              setinitialData(
-                query(query(collection(db, user.uid), orderBy("id", "desc")))
-              );
+          {selectvalue === "aaa" && (
+            <div>
+              <button
+                style={{ opacity: isfullOpacity ? "1" : "0.3" }}
+                onClick={() => {
+                  setisfullOpacity(true);
+                  setinitialData(
+                    query(
+                      query(collection(db, user.uid), orderBy("id", "desc"))
+                    )
+                  );
+                }}
+              >
+                Newest first
+              </button>
+              <button
+                style={{ opacity: isfullOpacity ? "0.3" : "1" }}
+                onClick={() => {
+                  setisfullOpacity(false);
+                  setinitialData(
+                    query(query(collection(db, user.uid), orderBy("id", "asc")))
+                  );
+                }}
+              >
+                Oldest first
+              </button>
+            </div>
+          )}
+          <select
+            value={selectvalue}
+            onChange={(eo) => {
+              if (eo.target.value === "aaa") {
+                setisfullOpacity(false);
+                setselectvalue("aaa");
+                setinitialData(allTasks);
+              } else if (eo.target.value === "bbb") {
+                setselectvalue("bbb");
+                setinitialData(
+                  completedTask
+                );
+              } else if (eo.target.value === "ccc") {
+                setselectvalue("ccc");
+                setinitialData(
+                  notCompletedTask
+                );
+              }
             }}
+            id="browsers"
           >
-            Newest first
-          </button>
-          <button
-            style={{ opacity: isfullOpacity ? "0.3" : "1" }}
-            onClick={() => {
-              setisfullOpacity(false);
-              setinitialData(
-                query(query(collection(db, user.uid), orderBy("id", "asc")))
-              );
-            }}
-          >
-            Oldest first
-          </button>
-          <select id="browsers">
-            <option value="ddddd"> All Tasks </option>
-            <option value="dddddd"> Completed </option>
-            <option value="dddddd"> Not Completed </option>
+            <option value="aaa"> All Task </option>
+            <option value="bbb"> Complete </option>
+            <option value="ccc"> Not Complete </option>
           </select>
         </section>
 
