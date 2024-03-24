@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 // closeModal => function to close the model
-const Modal = ({ closeModal, children }) => {
+const Modal = ({ closeModal, children , Modal , backgroundColor }) => {
   return (
     <div className="parent-of-model">
       <Helmet>

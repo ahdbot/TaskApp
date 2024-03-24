@@ -4,6 +4,7 @@ import Footer from "../comp/Footer";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import Error from "../pages/Error";
+import Loading from "react-loading";
 
 import {
   createUserWithEmailAndPassword,
@@ -14,8 +15,11 @@ import { useEffect, useState } from "react";
 import { auth } from "../firebase/config";
 import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useTranslation } from "react-i18next";
 
 const Signup = () => {
+  const { t, i18n } = useTranslation();
+  const [showLoading, setshowLoading] = useState(false);
   const navigate = useNavigate();
   const [email, setemail] = useState("");
   const [password, setpassowrd] = useState("");
@@ -40,17 +44,19 @@ const Signup = () => {
     }
   });
 
-  const SignUpBtn = (eo) => {
+  const SignUpBtn = async (eo) => {
     eo.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password)
+    setshowLoading(true);
+    await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
         console.log(user);
-
         sendEmailVerification(auth.currentUser).then(() => {
-          console.log("Email verification Sent ! ");
+          //
+          console.log("Email verification sent!");
         });
+
         updateProfile(auth.currentUser, {
           displayName: userName,
         })
@@ -59,17 +65,23 @@ const Signup = () => {
           })
           .catch((error) => {
             console.log(error.code);
+            // ...
           });
-        navigate("/");
+
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
+        console.log(errorCode);
         sethasError(true);
 
         switch (errorCode) {
           case "auth/invalid-email":
             setfirebaseError("Wrong Email");
+            break;
+
+          case "auth/operation-not-allowed":
+            setfirebaseError("للأسف لا  يُمكن   إنشاء حساب فى الوقت الحالى");
             break;
 
           case "auth/user-not-found":
@@ -89,8 +101,9 @@ const Signup = () => {
             break;
         }
       });
-  };
 
+    setshowLoading(false);
+  };
   if (error) {
     return <Error />;
   }
@@ -138,7 +151,11 @@ const Signup = () => {
         <main>
           <form>
             <p style={{ fontSize: "23px", marginBottom: "22px" }}>
-              Create a new account <span>🧡</span>{" "}
+              {i18n.language === "ar" && "تسجيل حساب"}
+              {i18n.language === "en" && "Register an account"}
+              {i18n.language === "fr" && "Enregistrer un compte"}
+              {i18n.language === "turk" && "Hesap kaydedin"}
+              {i18n.language === "jp" && "アカウントを登録する"}
             </p>
             <input
               onChange={(eo) => {
@@ -161,7 +178,7 @@ const Signup = () => {
                 setpassowrd(eo.target.value);
               }}
               type="password"
-              placeholder="password  : "
+              placeholder="password :"
               required
             />
             <button
@@ -169,12 +186,50 @@ const Signup = () => {
                 SignUpBtn(eo);
               }}
             >
-              Sign Up
+              {showLoading ? (
+                <div style={{ justifyContent: "center" }} className="flex">
+                  <Loading
+                    type={"spin"}
+                    color={"white"}
+                    height={20}
+                    width={20}
+                  />
+                </div>
+              ) : (
+                "Singup"
+              )}
             </button>
-            <p className="account">
-              don't have an account <Link to="/signin"> Sign in </Link>
-            </p>
-            {hasError && <p>{firebaseError}</p>}
+
+            {i18n.language === "ar" && (
+              <p className="account">
+                تمتلك حساب سجل دخول<Link to="/signin"> سجل دخول اولا</Link>
+              </p>
+            )}
+            {i18n.language === "en" && (
+              <p className="account">
+                Already hava an account <Link to="/signin"> Sign-in first</Link>
+              </p>
+            )}
+            {i18n.language === "fr" && (
+              <p className="account">
+                Vous avez déjà un compte{" "}
+                <Link to="/sign in">Connectez-vous d'abord</Link>
+              </p>
+            )}
+            {i18n.language === "turk" && (
+              <p className="account">
+                Zaten bir hesabınız var{" "}
+                <Link to="/sign in"> Önce oturum açın</Link>
+              </p>
+            )}
+            {i18n.language === "jp" && (
+              <p className="account">
+                Zaten bir hesabınız var すでにアカウントをお持ちです{" "}
+                <Link to="/sign in"> まずサインインしてください</Link>
+              </p>
+            )}
+
+            {hasError && <h6 className="mtt">{firebaseError}</h6>}
           </form>
         </main>
         <Footer />

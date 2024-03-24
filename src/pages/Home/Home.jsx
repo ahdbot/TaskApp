@@ -113,19 +113,83 @@ const Home = () => {
 
         <main>
           <h1 style={{ fontSize: "28px" }}>
-            {" "}
-            <span>Welcome to React Level 2 🔥🔥🔥</span>{" "}
+            {i18n.language === "en" && <span>Welcome to Task App </span>}
+
+            {i18n.language === "ar" && <span> مرحبا بك في تطبيق المهام</span>}
+
+            {i18n.language === "fr" && (
+              <span>Görev Uygulamasına Hoş Geldiniz</span>
+            )}
+            {i18n.language === "turk" && (
+              <span>Bienvenue au niveau 3 de React </span>
+            )}
+            {i18n.language === "jp" && <span>タスクアプリへようこそ </span>}
           </h1>
-          <p className="pls">
-            Please{" "}
-            <Link style={{ fontSize: "30px" }} to="/signin">
-              sign in
-            </Link>{" "}
-            to continue...{" "}
-            <span>
-              <i className="fa-solid fa-heart"></i>
-            </span>
-          </p>
+          {i18n.language === "en" && (
+            <p className="pls">
+              Please{" "}
+              <Link style={{ fontSize: "30px" }} to="/signin">
+                sign in
+              </Link>{" "}
+              to continue...{" "}
+              <span>
+                <i className="fa-solid fa-heart"></i>
+              </span>
+            </p>
+          )}
+
+          {i18n.language === "ar" && (
+            <p dir="rtl" className="pls mt">
+              من فضلك قم ب
+              <Link style={{ fontSize: "30px" }} to="/signin">
+                {" "}
+                تسجيل الدخول{" "}
+              </Link>{" "}
+              للإستمرار{" "}
+              <span>
+                <i className="fa-solid fa-heart"></i>
+              </span>
+            </p>
+          )}
+
+          {i18n.language === "fr" && (
+            <p className="pls mt">
+              Veuillez
+              <Link style={{ fontSize: "30px" }} to="/signin">
+                {" "}
+                vous connecter{" "}
+              </Link>{" "}
+              pour continuer{" "}
+              <span>
+                <i className="fa-solid fa-heart"></i>
+              </span>
+            </p>
+          )}
+          {i18n.language === "turk" && (
+            <p className="lütfen">
+              Lütfen{" "}
+              <Link style={{ fontSize: "30px" }} to="/signin">
+                {" "}
+                vous connecter{" "}
+              </Link>{" "}
+              devam etmek...{" "}
+              <span>
+                <i className="fa-solid fa-heart"></i>
+              </span>
+            </p>
+          )}
+          {i18n.language === "jp" && (
+            <p className="pls mt">
+              お願いします{" "}
+              <Link style={{ fontSize: "30px" }} to="/signin">
+                サインイン{" "}
+              </Link>{" "}
+              続ける...{" "}
+              <span>
+                <i className="fa-solid fa-heart"></i>
+              </span>
+            </p>
+          )}
         </main>
 
         <Footer />

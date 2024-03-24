@@ -14,19 +14,22 @@ const HomeModal = ({
   showLoading,
 }) => {
   return (
-    <Modal closeModal={closeModal}>
+ 
+
+    <Modal closeModal={closeModal} backgroundColor={"red"}>
       <div className="model-content">
         <input
+          required
           onChange={(eo) => {
             titleInput(eo);
           }}
-          required
           placeholder=" Add title : "
           type="text"
         />
 
         <div>
           <input
+            required
             onChange={(eo) => {
               detailsInput(eo);
             }}
