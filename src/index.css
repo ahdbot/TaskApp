@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo&display=swap");
+
 .flex {
   display: flex;
   align-items: center;
@@ -16,7 +18,7 @@ main {
   text-align: center;
 }
 
-.mt  {
+.mt {
   margin-top: 1em;
 }
 
@@ -60,7 +62,7 @@ body {
   padding: 0;
   color: white;
 
-  font-family: sans-serif;
+  font-family: "Cairo", sans-serif;
 
   text-decoration: none;
   list-style: none;
@@ -82,7 +84,6 @@ header {
 }
 
 h1 {
-  padding: 20px;
   font-size: 25px;
 }
 
@@ -183,25 +184,26 @@ span {
   }
 }
 
-
 ::-webkit-scrollbar {
   width: 1.1rem;
- }
- 
+}
+
 ::-webkit-scrollbar-track {
   border: 7px solid #232943;
   box-shadow: inset 0 0 2.5px 2px rgba(0, 0, 0, 0.5);
   border-radius: 1rem;
-  }
- 
+}
+
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(90deg, grey, #3c3c3c);
   border-radius: 1rem;
 }
- 
+
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(270deg, grey, #3d4a59, grey);
 }
- 
+
 /* for Firefox */
- html {scrollbar-color: grey #3d4a59;} 
+html {
+  scrollbar-color: grey #3d4a59;
+}

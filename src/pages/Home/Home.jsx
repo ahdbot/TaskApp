@@ -16,8 +16,10 @@ import HomeModal from "./Model";
 import { useState } from "react";
 import { doc, setDoc } from "firebase/firestore";
 import AllTasksSection from "./AllTasksSection";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
+  const { t, i18n } = useTranslation();
   const [showLoading, setshowLoading] = useState(false);
   const [taskTitle, settitle] = useState("");
   const [array, setarray] = useState([]);
@@ -178,7 +180,6 @@ const Home = () => {
 
           <main className="home ">
             {/* OPIONS (filtered data) */}
-  
 
             {/* SHOW all tasks */}
 
@@ -201,12 +202,19 @@ const Home = () => {
             {/* Add new task BTN */}
             <section className="mt">
               <button
+                dir="auto"
                 onClick={() => {
                   setshowModal(true);
                 }}
                 className="add-task-btn"
               >
-                Add new task <i className="fa-solid fa-plus"></i>
+                {i18n.language === "en" && "Add new task"}
+                {i18n.language === "ar" && "أضف مهمة جديدة"}
+                {i18n.language === "fr" && "Ajouter une nouvelle tâche"}
+                {i18n.language === "turk" && "Yeni görev ekle"}
+                {i18n.language === "jp" && "ِ新しいタスクを追加する"}
+
+                <i className="fa-solid fa-plus"></i>
               </button>
             </section>
 

@@ -1,6 +1,7 @@
 import Header from "../comp/header";
 import Footer from "../comp/Footer";
 
+import "./About.css";
 import { Helmet } from "react-helmet-async";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase/config";
@@ -51,16 +52,7 @@ const About = () => {
           </Helmet>
           <Header />
           <main>
-            <button
-              onClick={(eo) => {
-                inputElement.current.Foucs();
-              }}
-              className="delete"
-            >
-              delete
-            </button>
-
-            <input ref={inputElement} type="text" name="" id="aaaa" />
+ 
           </main>
           <Footer />
         </>
