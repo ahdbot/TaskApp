@@ -14,8 +14,6 @@ const HomeModal = ({
   showLoading,
 }) => {
   return (
- 
-
     <Modal closeModal={closeModal} backgroundColor={"red"}>
       <div className="model-content">
         <input

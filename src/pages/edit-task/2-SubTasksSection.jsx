@@ -4,10 +4,11 @@ import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import Moment from "react-moment";
 import ReactLoading from "react-loading";
+import { useTranslation } from "react-i18next";
 const SubTasksSection = ({ user, stringId, completedCheckbox, trashIcon }) => {
   const [value, loading, error] = useDocument(doc(db, user.uid, stringId));
   const [showAddNewTask, setshowAddNewTask] = useState(false);
-
+  const { t, i18n } = useTranslation();
   const [subTitle, setsubTitle] = useState("");
 
   if (value) {
@@ -26,7 +27,13 @@ const SubTasksSection = ({ user, stringId, completedCheckbox, trashIcon }) => {
               id="checkbox"
               type="checkbox"
             />
-            <label htmlFor="checkbox">Completed </label>
+            <label htmlFor="checkbox" className="congrats">
+              {i18n.language === "ar" && "مكتمل  "}
+              {i18n.language === "en" && "completed  "}
+              {i18n.language === "fr" && "complète  "}
+              {i18n.language === "turk" && "tamamlanmış  "}
+              {i18n.language === "jp" && "完成した  "}
+            </label>
           </div>
         </div>
 
@@ -68,7 +75,11 @@ const SubTasksSection = ({ user, stringId, completedCheckbox, trashIcon }) => {
               }}
               className="add"
             >
-              Add
+              {i18n.language === "ar" && "اضافة  "}
+              {i18n.language === "en" && "add  "}
+              {i18n.language === "fr" && "ajouter  "}
+              {i18n.language === "turk" && "eklemek "}
+              {i18n.language === "jp" && "追加  "}
             </button>
 
             <button
@@ -78,7 +89,11 @@ const SubTasksSection = ({ user, stringId, completedCheckbox, trashIcon }) => {
               }}
               className="cancel"
             >
-              cancel{" "}
+              {i18n.language === "ar" && "الغاء  "}
+              {i18n.language === "en" && "cancel  "}
+              {i18n.language === "fr" && "Annuler  "}
+              {i18n.language === "turk" && "iptal etmek  "}
+              {i18n.language === "jp" && "完成した  "}
             </button>
           </form>
         )}
@@ -90,7 +105,12 @@ const SubTasksSection = ({ user, stringId, completedCheckbox, trashIcon }) => {
             }}
             className="add-more-btn"
           >
-            Add more <i className="fa-solid fa-plus"></i>
+            {i18n.language === "ar" && "اضافة المزيد  "}
+            {i18n.language === "en" && "add More  "}
+            {i18n.language === "fr" && "Annuler  "}
+            {i18n.language === "turk" && "ajouter plus"}
+            {i18n.language === "jp" && "さらに追加  "}{" "}
+            <i className="fa-solid fa-plus"></i>
           </button>
         </div>
       </section>

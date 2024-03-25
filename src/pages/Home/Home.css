@@ -37,7 +37,6 @@
   flex-wrap: wrap;
 }
 
-
 .home .all-tasks .one-task {
   border: 2px solid white;
   margin: 40px 20px;
@@ -149,4 +148,12 @@
 .home .fa-trash {
   color: red;
   margin-left: 100px;
+}
+
+.Light .congrats {
+  color: #1b1b1b;
+}
+
+.Light .home .all-tasks .one-task .time time {
+  color: #1b1b1b;
 }

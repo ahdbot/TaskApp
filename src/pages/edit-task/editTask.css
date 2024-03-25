@@ -160,3 +160,7 @@
   border-radius: 5px;
   margin-left: 11px;
 }
+
+.Light .edit-task .time time {
+  color: #191919;
+}

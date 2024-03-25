@@ -1,3 +1,5 @@
+
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCollection } from "react-firebase-hooks/firestore";
@@ -125,7 +127,13 @@ const AllTasksSection = ({ user }) => {
 
         <section className="flex all-tasks mt">
           {value.docs.length === 0 && (
-            <h1>Congratulations! You have completed your tasks ♥</h1>
+
+             
+            
+        <h1 className="congrats">       {t("congrat")} </h1>
+    
+
+
           )}
 
           {value.docs.map((item) => {

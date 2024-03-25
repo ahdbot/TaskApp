@@ -9,6 +9,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase/config";
 import { signOut } from "firebase/auth";
 import { useTranslation } from "react-i18next";
+
 const Header = () => {
   const { t, i18n } = useTranslation();
   const [user] = useAuthState(auth);
@@ -19,6 +20,7 @@ const Header = () => {
       <header className="hide-when-mobile ali ">
         <h1>
           <Link to="/">
+          <i style={{marginRight:"10px"}} class="fa-solid fa-list-check"></i>
             {i18n.language === "fr" && "Application de tâches"}
             {i18n.language === "en" && "Task APP"}
             {i18n.language === "ar" && " تطبيق المهام"}

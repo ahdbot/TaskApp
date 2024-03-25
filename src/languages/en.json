@@ -1,9 +1,11 @@
 {
-    "lang": "language",
+    "lang": "Language",
     "signout": "Sign-out",
+    "signin": "Sign-in",
     "support": "support",
     "account": "Profile",
     "footer": " Designed and developed by Ahmad Bajaber",
     "passowrd": "passowrd",
-    "Singup" : "Singup "
+    "Singup" : "Singup ",
+    "congrat" : "Congratulations! You have completed your tasks   "
 }

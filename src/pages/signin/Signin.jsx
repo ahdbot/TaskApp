@@ -11,7 +11,7 @@ import {
 import { auth } from "../../firebase/config";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
 import "./signin.css";
 
 const Signin = () => {
@@ -24,7 +24,7 @@ const Signin = () => {
   const [CloseModal, setCloseModal] = useState(true);
   const [showSendEmail, setshowSendEmail] = useState(false);
   const [showModal, setshowModal] = useState(false);
-
+  const { t, i18n } = useTranslation();
   const forgotPassword = () => {
     setshowModal(true);
   };
@@ -32,7 +32,6 @@ const Signin = () => {
   const closeModal = () => {
     setshowModal(false);
   };
-
 
   const SignInBTN = (eo) => {
     eo.preventDefault();
@@ -105,7 +104,11 @@ const Signin = () => {
                   });
               }}
             >
-              Reset Password
+              {i18n.language === "ar" && " ارسل "}
+              {i18n.language === "en" && " send "}
+              {i18n.language === "fr" && " envoyer "}
+              {i18n.language === "turk" && " elçi "}
+              {i18n.language === "jp" && " 送信 "}
             </button>
             {showSendEmail && (
               <p className="check-email">
@@ -141,9 +144,33 @@ const Signin = () => {
           >
             Sign in
           </button>
-          <p className="account mtt">
-            Don't hava an account <Link to="/signup"> Sign-up</Link>
-          </p>
+
+          {i18n.language === "ar" && (
+            <p className="account mtt">
+              لاتملك حساب <Link to="/signup"> تسجيل دخول</Link>
+            </p>
+          )}
+          {i18n.language === "en" && (
+            <p className="account mtt">
+              Don't hava an account <Link to="/signup"> Sign-up</Link>
+            </p>
+          )}
+          {i18n.language === "fr" && (
+            <p className="account mtt">
+              Je n'ai pas de compte <Link to="/signup">S'inscrire</Link>
+            </p>
+          )}
+          {i18n.language === "turk" && (
+            <p className="account mtt">
+              Hesap açmayın <Link to="/signup"> Üye olmak</Link>
+            </p>
+          )}
+          {i18n.language === "jp" && (
+            <p className="account mtt">
+              アカウントをお持ちではありません{" "}
+              <Link to="/signup">サインイン</Link>
+            </p>
+          )}
 
           <p
             onClick={() => {
@@ -151,7 +178,11 @@ const Signin = () => {
             }}
             className="forgot-pass mtt"
           >
-            Forgot password ?
+            {i18n.language === "ar" && " نسيت كلمة المرور "}
+            {i18n.language === "en" && " forget Passowrd"}
+            {i18n.language === "fr" && " Mot de passe oublié"}
+            {i18n.language === "turk" && " Parolanızı mı unuttunuz"}
+            {i18n.language === "jp" && " パスワードをお忘れですか"}
           </p>
 
           {hasError && <h2>{firebaseError}</h2>}
